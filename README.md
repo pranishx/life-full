@@ -93,12 +93,12 @@
 
     ## Example:
 
-        ```
+    ```
         <select id="month" [(ngModel)]="selectedMonth" (change)="onFilterChange()">
 
       <option *ngFor="let month of [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12]" [value]="month">
         {{ month }}
       </option>
-    </select>
-    <input id="year" type="number" [(ngModel)]="selectedYear" (change)="onFilterChange()" />
+      </select>
+       <input id="year" type="number" [(ngModel)]="selectedYear" (change)="onFilterChange()" />
     ```
