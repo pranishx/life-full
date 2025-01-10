@@ -1,0 +1,29 @@
+<div class="expense-list">
+  <h2>Expense List</h2>
+
+  <table *ngIf="expenseList.length > 0; else content">
+    <thead>
+      <tr>
+        <th>Description</th>
+        <th>Amount</th>
+        <th>Date</th>
+        <th>Category</th>
+        <th>Actions</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let expense of expenseList; index as i">
+        <td>{{ expense.description }}</td>
+        <td>{{ expense.amount }}</td>
+        <td>{{ expense.date }}</td>
+        <td>{{ expense.category }}</td>
+        <td>
+          <button (click)="deleteExpense(i)">Delete</button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+  <ng-template #content>
+    <h1>No Expenses Found.</h1>
+  </ng-template>
+</div>

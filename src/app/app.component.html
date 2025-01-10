@@ -1,0 +1,40 @@
+<div class="app-layout">
+  <!-- Sidebar -->
+  <div
+    [ngClass]="isSidebarActive ? 'open-sidebar-open' : 'open-sidebar-closed'"
+    (click)="toggleSideBar($event)"
+  >
+    <i
+      *ngIf="!isSidebarActive"
+      class="uis uis-angle-double-right"
+      style="font-size: 25px; color: white"
+    ></i>
+    <i
+      *ngIf="isSidebarActive"
+      class="uis uis-angle-double-left"
+      style="font-size: 25px; color: white"
+    ></i>
+  </div>
+  <nav
+    class="sidebar"
+    [ngStyle]="{ display: isSidebarActive ? 'block' : 'none' }"
+  >
+    <h2>Expense Tracker</h2>
+    <ul>
+      <li>
+        <a routerLink="/expenses" routerLinkActive="active">Expense List</a>
+      </li>
+      <li>
+        <a routerLink="/expenses/add" routerLinkActive="active">Add Expense</a>
+      </li>
+      <li>
+        <a routerLink="/expenses/summary" routerLinkActive="active">Summary</a>
+      </li>
+    </ul>
+  </nav>
+
+  <!-- Content Area -->
+  <main class="content">
+    <router-outlet></router-outlet>
+  </main>
+</div>

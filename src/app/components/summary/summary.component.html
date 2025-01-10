@@ -1,0 +1,61 @@
+<div class="summary">
+  <h2>Expense Summary</h2>
+
+  <!-- Total Expenses -->
+  <p>Total Expenses: ₹{{ totalExpenses }}</p>
+
+  <!-- Category-wise Breakdown -->
+  <h3>Category Breakdown</h3>
+  <ul>
+    <li *ngFor="let category of categoryTotals | keyvalue">
+      <span>{{ category.key }}</span>
+      <span>₹{{ category.value }}</span>
+    </li>
+  </ul>
+
+  <!-- Filter by Date -->
+  <h3>Filter by Date</h3>
+  <div class="filter-container">
+    <div>
+      <label for="month">Month:</label>
+      <select
+        id="month"
+        [(ngModel)]="selectedMonth"
+        (change)="onFilterChange()"
+      >
+        <option
+          *ngFor="let month of [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12]"
+          [value]="month"
+        >
+          {{ month }}
+        </option>
+      </select>
+    </div>
+
+    <div>
+      <label for="year">Year:</label>
+      <input
+        id="year"
+        type="number"
+        [(ngModel)]="selectedYear"
+        (change)="onFilterChange()"
+        min="2000"
+        [max]="currentYear"
+      />
+    </div>
+  </div>
+
+  <!-- Filtered Expenses -->
+  <div class="filtered-expenses">
+    <h3>Filtered Expenses</h3>
+    <ul>
+      <li *ngFor="let expense of filteredExpenses">
+        <span>{{ expense.date }} - {{ expense.description }}</span>
+        <span>₹{{ expense.amount }}</span>
+      </li>
+    </ul>
+    <p *ngIf="filteredExpenses.length === 0">
+      No expenses found for the selected date.
+    </p>
+  </div>
+</div>
