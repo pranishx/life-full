@@ -18,6 +18,7 @@ export class ExpenseService {
 
   addExpenses(expense: any): void {
     const currentExpenses = this.getDataFromLocalStorage();
+    expense.id = this.generateId(100);
     const updatedExpenses = [...currentExpenses, expense];
     this.expenses.next(updatedExpenses);
     this.addToLocalStorage(updatedExpenses);
@@ -76,5 +77,9 @@ export class ExpenseService {
   private refreshLocalStorage(): void {
     const updatedExpenses = this.getDataFromLocalStorage();
     this.expenses.next(updatedExpenses);
+  }
+
+  private generateId(max: number): number {
+    return Math.floor(Math.random() * max);
   }
 }

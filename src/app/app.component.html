@@ -15,10 +15,7 @@
       style="font-size: 25px; color: white"
     ></i>
   </div>
-  <nav
-    class="sidebar"
-    [ngStyle]="{ display: isSidebarActive ? 'block' : 'none' }"
-  >
+  <nav class="sidebar" [@openClose]="isSidebarActive ? 'open' : 'closed'">
     <h2>Expense Tracker</h2>
     <ul>
       <li>

@@ -13,7 +13,6 @@ export class SummaryComponent implements OnInit {
   selectedMonth: number = new Date().getMonth() + 1;
   selectedYear: number = new Date().getFullYear();
   currentYear: number = new Date().getFullYear();
-  new: any;
 
   constructor(private expenseService: ExpenseService) {}
 
